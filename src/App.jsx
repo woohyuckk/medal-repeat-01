@@ -8,20 +8,20 @@ import MedalList from "./components/MedalList";
 const App = () => {
   // LocalStorage 불러오기 및 초기화
   const getInitialMedalRecords = () => {
-    const storedMedalRecords = localStorage.getItem("medalRecords");
+    const storedMedalRecords = localStorage.getItem("testmedalRecords");
     return storedMedalRecords ? JSON.parse(storedMedalRecords) : [];
   };
 
   const [medalRecords, setMedalRecords] = useState(getInitialMedalRecords);
 // LocalStrage 데이터 저장 및 상태관리 
   useEffect(() => {
-    localStorage.setItem("medalRecords", JSON.stringify(medalRecords));
+    localStorage.setItem("testmedalRecords", JSON.stringify(medalRecords));
   }, [medalRecords]);
 
   return (
     <div>
       <InputForm medalRecords={medalRecords} setMedalRecords={setMedalRecords}/>
-      <MedalList></MedalList>
+      <MedalList medalRecords={medalRecords} setMedalRecords={setMedalRecords}></MedalList>
     </div>
   );
 };
