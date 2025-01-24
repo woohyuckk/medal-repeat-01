@@ -55,7 +55,7 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
           goldMedal,
           silverMedal,
           bronzeMedal,
-          sumMedals : goldMedal+silverMedal+bronzeMedal,
+          sumMedals: goldMedal + silverMedal + bronzeMedal,
         };
       }
       return record;
@@ -73,17 +73,12 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
   };
 
   return (
-    <form
-      onSubmit={addMedalrecords}
-      style={{
-        display: "flex",
-        gap: "12px",
-      }}
-    >
+    <form onSubmit={addMedalrecords} className="FormContainer">
       <div>
         <label>국가명</label>
         <br />
         <input
+          className="input"
           id="국가명"
           type="text"
           value={nation}
@@ -98,6 +93,7 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
         <label>금메달</label>
         <br />
         <input
+          className="input"
           id="금메달"
           type="number"
           value={goldMedal}
@@ -111,6 +107,7 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
         <label>은메달</label>
         <br />
         <input
+          className="input"
           id="은메달"
           type="number"
           value={silverMedal}
@@ -124,6 +121,7 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
         <label>동메달</label>
         <br />
         <input
+          className="input"
           id="동메달"
           type="number"
           value={bronzeMedal}
@@ -133,11 +131,14 @@ const InputForm = ({ medalRecords, setMedalRecords }) => {
           required
         ></input>
       </div>
-      <div>
-
-      
-      <button type="submit">국가 추가</button>
-      <button type="button" onClick={handleUpdate}>업데이트</button>
+      <div className="input-btn-container">
+    
+        <button className="input-btn" type="submit">
+          국가 추가
+        </button>
+        <button className="input-btn" type="button" onClick={handleUpdate}>
+          업데이트
+        </button>
       </div>
     </form>
   );

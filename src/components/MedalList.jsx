@@ -1,7 +1,27 @@
 import React from "react";
 
+const medalListBtn = {
+    backgroundColor: "transparent",
+    border: "0",
+    cursor: "pointer",
+    marginLeft: "5px",
+  };
+  
+
 const MedalList = ({ medalRecords, setMedalRecords }) => {
-  const handleDelete = (nation) => {
+  
+  
+  const handleGoldSort = () =>{
+    const sortedRecords = medalRecords.sort((a,b)=>{ 
+        if(b.goldMedal !== a.goldMedal){
+            return 
+            b.goldMedal-a.goldMedal
+        }
+        } )
+  }
+  
+  
+    const handleDelete = (nation) => {
     const deletedMedalRecords = medalRecords.filter((record) => {
       return record.nation !== nation;
     });
@@ -9,13 +29,19 @@ const MedalList = ({ medalRecords, setMedalRecords }) => {
     setMedalRecords(deletedMedalRecords.sort((a,b)=>b.goldMedal-a.goldMedal));
   };
 
+  
+
+
+
   return (
     <div>
       <table>
         <thead>
           <tr>
             <th>국가명</th>
-            <th>금메달</th>
+            <th>금메달
+                <button style={medalListBtn} onClick={handleGoldSort}>{isGoldDescending? "▼": "▲"}</button>
+            </th>
             <th>은메달</th>
             <th>동메달</th>
             <th>총합</th>
